@@ -1,0 +1,161 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("../assets/img/header-bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+.form-container-wrapper {
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.form-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.form {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.form-step {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #ffe480;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.375rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #171A4A;
+    border-color: #171A4A;
+}
+
+.btn-primary:hover {
+    background-color: #ffc800;
+    border-color: #ffc800;
+}
+
+.btn-navigation {
+    margin-top: 20px;
+}
+
+.navigation-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #dee2e6;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 0;
+    background-color: #171A4A;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Agrega estilos para la barra de progreso superior */
+.progress-bar-top {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+/* Agrega estilos para la barra de progreso superior interna */
+#progress-bar-inner-top {
+    height: 100%;
+    width: 0;
+    background-color: #171A4A;
+    transition: width 0.5s ease-in-out;
+    border-radius: 10px; /* Agrega esto para que coincida con la esquina redondeada */
+}
+/* Agrega estilos para el menú de pasos */
+.step-menu {
+    display: flex;
+    justify-content:flex-start;
+    background-color: #eee;
+    padding: 10px;
+}
+
+.step-title {
+    padding: 10px;   
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.step-title.active {
+    background-color: #171A4A;
+    color: #fff;
+}
+/* Añade estos estilos para ocultar inicialmente todos los pasos */
+.step-title {
+    display: none;
+}
+
+/* Muestra solo los pasos hasta el actual */
+#step-title-1,
+#step-title-2,
+#step-title-3,
+#step-title-4 {
+    display: inline-block;
+}
+/* Estilos para el icono de flecha */
+.arrow-icon {
+    margin-right: 5px; /* Ajusta el margen según tus preferencias */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente según tus preferencias */
+  }
+  
+

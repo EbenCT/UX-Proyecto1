@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulario por Pasos</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#page-top"><i class="fas fa-home"></i>  Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Preinscripcion</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">Otros servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">Informacion</a></li>
+                <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Buscar registro</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+    <div class="form-container-wrapper">
+        <div class="form-container">
+            <!-- Contenedor del formulario -->
+            <div class="form-container-inner">
+                <div class="progress-bar-top">
+                    <div id="progress-bar-inner-top" class="progress-bar-inner"></div>
+                </div>
+                <!-- Agrega esto debajo de tu barra de progreso superior en el cuerpo del formulario -->
+                <div class="step-menu">
+                    <span id="step-title-1" class="step-title active"><span class="arrow-icon">&#10132;</span>Paso 1 de 4</span>
+                    <span id="step-title-2" class="step-title"><span class="arrow-icon">&#10132;</span>Paso 2 de 4</span>
+                    <span id="step-title-3" class="step-title"><span class="arrow-icon">&#10132;</span>Paso 3 de 4</span>
+                    <span id="step-title-4" class="step-title"><span class="arrow-icon">&#10132;</span>Paso 4 de 4</span>
+                </div>
+                <form id="form" class="form">
+                    <!-- Paso 1 -->
+                    <div class="form-step" data-step="1">
+                        <!-- Contenido del Paso 1 -->
+                        <label for="field1">Campo 1:</label>
+                        <input type="text" id="field1" class="form-control" placeholder="Ingrese su información">
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(1)">Anterior</button>
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="nextStep(2)">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="form-step" data-step="2">
+                        <!-- Contenido del Paso 2 -->
+                        <label for="field2">Campo 2:</label>
+                        <input type="text" id="field2" class="form-control" placeholder="Ingrese otra información">
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(1)">Anterior</button>
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="nextStep(3)">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="form-step" data-step="3">
+                        <!-- Contenido del Paso 3 -->
+                        <label for="field3">Campo 3:</label>
+                        <input type="text" id="field3" class="form-control" placeholder="Ingrese más información">
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(2)">Anterior</button>
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="nextStep(4)">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="form-step" data-step="4">
+                        <!-- Contenido del Paso 4 -->
+                        <label for="field4">Campo 4:</label>
+                        <input type="text" id="field4" class="form-control" placeholder="Ingrese información final">
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(3)">Anterior</button>
+                            <button type="submit" class="btn btn-primary btn-navigation">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

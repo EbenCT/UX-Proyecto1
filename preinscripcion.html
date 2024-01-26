@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulario por Pasos</title>
+</head>
+<iframe src="menu.html" width="100%"  frameborder="0"></iframe>
+<body>
+
+    <div class="form-container-wrapper">
+        <div class="form-container">
+            <!-- Contenedor del formulario -->
+            <div class="form-container-inner">
+                <div class="progress-bar-top">
+                    <div id="progress-bar-inner-top" class="progress-bar-inner"></div>
+                </div>
+                <!-- Agrega esto debajo de tu barra de progreso superior en el cuerpo del formulario -->
+                <div class="step-menu">
+                    <span id="step-title-1" class="step-title active"><span class="arrow-icon">&#10132;</span>Paso 1 de 3</span>
+                    <span id="step-title-2" class="step-title"><span class="arrow-icon">&#10132;</span>Paso 2 de 3</span>
+                    <span id="step-title-3" class="step-title"><span class="arrow-icon">&#10132;</span>Paso 3 de 3</span>
+                    
+                </div>
+                <form id="form" class="form">
+                    <!-- Paso 1 -->
+<div class="form-step" data-step="1">
+    <h2>Datos del estudiante</h2>
+    <!-- Contenido del Paso 1 -->
+    <div class="form-row">
+        <div class="form-group">
+            <label for="carnet">Número de Carnet:</label>
+            <input type="text" id="carnet" class="form-control" 
+            placeholder="Ingrese número de carnet" data-required="Ingrese el número de carnet"minlength="7" maxlength="10">
+        </div>
+
+        <div class="form-group">
+            <label for="expedido">Expedido en:</label>
+            <select id="expedido" class="form-control" >
+                <option value="SC">SC</option>
+                <option value="LP">LP</option>
+                <option value="PT">PT</option>
+                <option value="BN">BN</option>
+                <option value="CB">CB</option>
+                <option value="CH">CH</option>
+                <option value="TJ">TJ</option>
+                <option value="OR">OR</option>
+                <option value="PN">PN</option>
+                <!-- Agrega más opciones según sea necesario -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lugar-nacimiento">Lugar de Nacimiento:</label>
+            <input type="text" id="lugar-nacimiento" class="form-control" placeholder="Ingrese lugar de nacimiento" data-required="Ingrese lugar de nacimiento">
+        </div>
+        <div class="form-group">
+            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha-nacimiento" class="form-control" data-required="Ingrese una fecha valida">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="apellido-paterno">Apellido Paterno:</label>
+            <input type="text" id="apellido-paterno" class="form-control" placeholder="Ingrese apellido paterno" data-required="Ingrese apellido paterno">
+        </div>
+
+        <div class="form-group">
+            <label for="apellido-materno">Apellido Materno:</label>
+            <input type="text" id="apellido-materno" class="form-control" placeholder="Ingrese apellido materno" data-required="Ingrese apellido materno">
+        </div>
+
+        <div class="form-group">
+            <label for="nombres">Nombre(s):</label>
+            <input type="text" id="nombres" class="form-control" placeholder="Ingrese nombres" data-required="Ingrese nombre(s)">
+        </div>
+    </div>
+
+    <div class="navigation-container">
+        <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(1)">Anterior</button>
+        <button type="button" class="btn btn-primary btn-navigation" onclick="validateStep1()">Siguiente</button>
+    </div>
+</div>
+
+
+                    <!-- Paso 2 -->
+                    <div class="form-step" data-step="2">
+                        <h2>Ubicacion y Unidad educativa</h2>
+    
+                        <!-- Contenido del Paso 2 -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departamento">Departamento:</label>
+                                <select id="departamento" class="form-control" onchange="updateCities()" data-required="Seleccione un departamento">
+                                    <option value="scz">Santa Cruz</option>
+                                    <option value="lpz">La Paz</option>
+                                    <option value="cb">Cochabamba</option>
+                                    <option value="or">Oruro</option>
+                                    <option value="ch">Chuquisaca</option>
+                                    <option value="tj">Tarija</option>
+                                    <option value="bn">Beni</option>
+                                    <option value="pn">Pando</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ciudad">Ciudad:</label>
+                                <select id="ciudad" class="form-control" onchange="updateDistricts()" data-required="Seleccione una ciudad">
+                                    <!-- Opciones de ciudad se llenarán dinámicamente -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zona">Zona/Distrito:</label>
+                                <select id="zona" class="form-control" data-required="Seleccione una Zona o Distrito">
+                                    <!-- Opciones de zona se llenarán dinámicamente -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-column">
+                                <div id="map-container">
+                                    <!-- Aquí se mostrará el mapa -->
+                                    
+                                </div>
+                            </div>
+                        
+                            <!-- Columna derecha para las listas desplegables -->
+                            <div class="form-column">
+                                <div id="dropdown-container">
+                                    <!-- Lista desplegable para Unidades Educativas -->
+                                    <label for="edu-institution">Unidades Educativas:</label>
+                                    <select id="edu-institution" class="form-control" onchange="updateEducationLevels()"data-required="Seleccione una unidad educativa">
+                                        <!-- Las opciones se actualizarán dinámicamente -->
+                                    </select>
+                        
+                                    <!-- Aquí empieza la nueva fila -->
+                                    <div class="form-row">
+                                        <!-- Lista desplegable para Nivel de Estudio -->
+                                        <div class="form-column">
+                                            <label for="study-level">Nivel de Estudio:</label>
+                                            <select id="study-level" class="form-control" onchange="updateAdmissionYears()" data-required="Seleccione el nivel de estudio al que postula">
+                                                <!-- Las opciones se actualizarán dinámicamente -->
+                                            </select>
+                                        </div>
+                        
+                                        <!-- Lista desplegable para Año al que postula -->
+                                        <div class="form-column">
+                                            <label for="admission-year">Año al que postula:</label>
+                                            <select id="admission-year" class="form-control" data-required="Seleccione un año">
+                                                <!-- Las opciones se actualizarán dinámicamente -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Aquí termina la nueva fila -->
+                                    <div class="form-row note-highlight">
+                                        <b>Nota: Los colegios sin cupo no se muestran!</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(1)">Anterior</button>
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="validateStep2() && nextStep(3)">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="form-step" data-step="3">
+                        <h2>Datos del Padre/Madre/Tutor</h2>
+                        <!-- Contenido del Paso 3 -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="carnet-pmt">Número de Carnet:</label>
+                                <input type="text" id="carnet-pmt" class="form-control" placeholder="Ingrese número de carnet" data-required="Ingrese número de carnet"minlength="7" maxlength="10">
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="expedido-pmt">Expedido en:</label>
+                                <select id="expedido-pmt" class="form-control">
+                                    <option value="SC">SC</option>
+                                    <option value="LP">LP</option>
+                                    <option value="PT">PT</option>
+                                    <option value="BN">BN</option>
+                                    <option value="CB">CB</option>
+                                    <option value="CH">CH</option>
+                                    <option value="TJ">TJ</option>
+                                    <option value="OR">OR</option>
+                                    <option value="PN">PN</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ocupacion-laboral">Ocupacion Laboral:</label>
+                                <input type="text" id="ocupacion-laboral" class="form-control" placeholder="Ingrese su ocupacion laboral" data-required="Ingrese ocupacion laboral">
+                            </div>
+                            <div class="form-group">
+                                <label for="parentesco">Parentesco:</label>
+                                <select id="parentesco" class="form-control">
+                                    <option value="padre">Padre</option>
+                                    <option value="madre">Madre</option>
+                                    <option value="tutor">Tutor</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="apellido-paterno-pmt">Apellido Paterno:</label>
+                                <input type="text" id="apellido-paterno-pmt" class="form-control" placeholder="Ingrese apellido paterno" data-required="Ingrese apellido paterno">
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="apellido-materno-pmt">Apellido Materno:</label>
+                                <input type="text" id="apellido-materno-pmt" class="form-control" placeholder="Ingrese apellido materno" data-required="Ingrese apellido materno">
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="nombres-pmt">Nombre(s):</label>
+                                <input type="text" id="nombres-pmt" class="form-control" placeholder="Ingrese nombres" data-required="Ingrese nombres">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="direccion">Direccion de su residencia:</label>
+                                <input type="text" id="direccion" class="form-control direccion-input" placeholder="Ingrese Avenida, Calle, Nro"data-required="Ingrese su direccion">
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="celular">Nro Celular:</label>
+                                <input type="number" id="calular" class="form-control" placeholder="Ingrese su telefono"data-required="Ingrese su telefono" maxlength="8">
+                            </div>
+                        </div>
+                        <div class="navigation-container">
+                            <button type="button" class="btn btn-primary btn-navigation" onclick="prevStep(2)">Anterior</button>
+                            <button type="submit" class="btn btn-primary btn-navigation" onclick="validateStep3()">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
